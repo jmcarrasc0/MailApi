@@ -2,7 +2,7 @@
 
 namespace MailApi.Models
 {
-    public class EmailHost :IEmail
+    public class EmailHost : IEmail
     {
         public string Host { get; set; }
         public List<Addressee> Addressees { get; set; }

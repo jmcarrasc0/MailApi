@@ -11,6 +11,7 @@
         public List<Addressee>? MailHideCopy { get; set; }
         public string Title { get; set; }
         public List<Attached>? Attacheds { get; set; }
+        public bool IsRelay { get; set; }
         public string? Generico0 { get; set; }
         public string? Generico1 { get; set; }
         public string? Generico2 { get; set; }

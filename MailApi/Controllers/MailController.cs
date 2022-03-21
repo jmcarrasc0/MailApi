@@ -17,18 +17,46 @@ namespace MailApi.Controllers
         [HttpPost]
         [Route("Welcome")]
         [Consumes("application/json")]
-        public IActionResult Bienvenida([FromBody] Generic generic)
+        public IActionResult Welcome([FromBody] Generic generic)
         {
             if (generic != null)
             {
                 if (m.SendWelcomeMail(generic))
                 {
-                    return Ok("Correo Enviado");
+                    return Ok("Mail Sent");
                 }
 
             }
 
-            return BadRequest("Error en data");
+            return BadRequest("Error in data");
         }
+
+
+
+        [HttpPost]
+        [Route("Sending")]
+        [Consumes("application/json")]
+        public IActionResult Sending([FromBody] Generic generic)
+        {
+            if (generic!= null)
+            {
+                var FormatName = "Generic.html";
+
+                if (m.CreateFormat(generic.Format, FormatName))
+                {
+                    _ = m.SendMail(generic);
+
+                    if (m.CleanFormat(FormatName))
+                    {
+                        return Ok("Mail Sent");
+                    }
+                    return BadRequest("Error Clean Format");
+                }
+                return BadRequest("Error Create Format");
+            }
+
+            return BadRequest("Error in data");
+        }
+
     }
 }

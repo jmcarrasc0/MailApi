@@ -19,7 +19,7 @@ namespace MailApi.Services
 
                     Port = mail.Port,
                     EnableSsl = mail.IsSSL,
-                    Credentials = new NetworkCredential(mail.Account, mail.Password),
+                    Credentials = new NetworkCredential(mail.Account, mail.Password)                    
 
 
                 };
